@@ -51,7 +51,7 @@
       <hr>
       <div align="right" class="row">
         <div class="col-12">
-          <a href="buy.php"><button class="btn btn-success" type="button">Buy</button></a>
+          <a href="buy_script.php"><button class="btn btn-success" type="button">Buy</button></a>
         </div>
       </div>
     </div>
