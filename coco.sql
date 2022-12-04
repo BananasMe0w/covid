@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2022 at 09:36 AM
+-- Generation Time: Dec 04, 2022 at 04:29 AM
 -- Server version: 5.7.12-log
 -- PHP Version: 5.6.21
 
@@ -23,6 +23,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_bill`
+--
+
+CREATE TABLE `tbl_bill` (
+  `bill_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `data` text NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_bill`
+--
+
+INSERT INTO `tbl_bill` (`bill_id`, `user_id`, `data`, `date`) VALUES
+(6, 1, '[{"cart_id":"29","user_id":"1","prod_id":"1","quantity":"1","time":"2022-12-04 10:15:05"}]', '2022-12-04 10:15:07'),
+(9, 1, '[{"cart_id":"32","user_id":"1","prod_id":"1","quantity":"1","time":"2022-12-04 10:33:56"},{"cart_id":"33","user_id":"1","prod_id":"8","quantity":"1","time":"2022-12-04 10:33:57"},{"cart_id":"34","user_id":"1","prod_id":"4","quantity":"1","time":"2022-12-04 10:33:59"}]', '2022-12-04 10:34:08'),
+(10, 1, '[{"cart_id":"35","user_id":"1","prod_id":"3","quantity":"2","time":"2022-12-04 10:50:19"},{"cart_id":"36","user_id":"1","prod_id":"4","quantity":"1","time":"2022-12-04 10:50:22"},{"cart_id":"37","user_id":"1","prod_id":"8","quantity":"1","time":"2022-12-04 10:50:25"},{"cart_id":"38","user_id":"1","prod_id":"6","quantity":"1","time":"2022-12-04 10:50:27"}]', '2022-12-04 10:50:30'),
+(11, 1, '[]', '2022-12-04 11:10:59'),
+(12, 1, '[]', '2022-12-04 11:11:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_cart`
 --
 
@@ -33,14 +57,6 @@ CREATE TABLE `tbl_cart` (
   `quantity` int(11) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_cart`
---
-
-INSERT INTO `tbl_cart` (`cart_id`, `user_id`, `prod_id`, `quantity`, `time`) VALUES
-(24, '1', 1, 3, '2022-12-03 14:59:52'),
-(25, '1', 2, 2, '2022-12-03 15:00:04');
 
 -- --------------------------------------------------------
 
@@ -99,6 +115,12 @@ INSERT INTO `tbl_user` (`id`, `name`, `address`, `tel`, `email`, `password`, `st
 --
 
 --
+-- Indexes for table `tbl_bill`
+--
+ALTER TABLE `tbl_bill`
+  ADD PRIMARY KEY (`bill_id`);
+
+--
 -- Indexes for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
@@ -121,10 +143,15 @@ ALTER TABLE `tbl_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_bill`
+--
+ALTER TABLE `tbl_bill`
+  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --

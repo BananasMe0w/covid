@@ -9,43 +9,36 @@
     <?php include "checknav.php"; ?>
 
     <div class="container">
-      <table class="table table-responsive-lg">
-        <thead>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Price</th>
-          <th>Action : <a href="print.php"><button class="btn btn-info" type="button">print</button></a></th>
-        </thead>
-        <?php
-          include "connect.php";
-          $sql = "SELECT * FROM tbl_cart";
-          $result = $con->query($sql);
+      <div class="card mt-3">
+          <div class="card-header text-white bg-primary">
+            <h4>Bill</h4>
+          </div>
+          <div class="card-body">
 
-          while ($row = $result->fetch_assoc()) {
-          $sql2 = "SELECT * FROM tbl_product WHERE id='$row[prod_id]'";
-          $result2 = $con->query($sql2);
-          while ($row2 = $result2->fetch_assoc()) {
+            <table class="table table-respondsive">
 
-          $total = $total + $row['quantity'] * $row2['price']
-        ?>
-        <tbody>
-          <tr>
-            <td><?php echo $row2['name']; ?></td>
-            <td><?php echo number_format($row['quantity']); ?></td>
-            <td><?php echo number_format($row2['price']); ?></td>
-          </tr>
-        </tbody>
-      <?php }} ?>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>Total :
-            <?php
-              echo number_format($total);
-            ?>
-          </td>
-        </tr>
-      </table>
+                <thead>
+                  <th>เลขทีคำสั่งซื้อ</th>
+                  <th>วันเวลา</th>
+                  <th>Action :</th>
+                </thead>
+                <tbody>
+                  <?php
+                  $sql = "SELECT * FROM tbl_bill WHERE user_id = '$_SESSION[sess_id]'";
+                  $result = $con->query($sql);
+                  while($row = $result->fetch_assoc()){
+                  ?>
+                  <tr>
+                    <td>#<?php echo $row['bill_id']; ?></td>
+                    <td><?php echo $row['date'];?></td>
+                    <td> <a href="bill.php?id=<?php echo $row['bill_id'];?>"> <button type="button" class="btn btn-success"> ดู </button> </a> </td>
+                  </tr>
+                <?php }?>
+                </tbody>
+            </table>
+
+          </div>
+      </div>
     </div>
 
     <script src="js/jquery.js" charset="utf-8"></script>

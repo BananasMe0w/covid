@@ -14,6 +14,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SawasD <?php echo $_SESSION['sess_name']; ?></a>
         <div class="dropdown-menu">
+          <a class="dropdown-item" href="buy.php">ดูเลขคำสั่งซื้อ</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
       </li>
